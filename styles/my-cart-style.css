@@ -1,0 +1,126 @@
+/* Cartão Lateral */
+.my-cart-container {
+    padding: 24px;
+    background-color: var(--white);
+    border-radius: 8px;
+    align-items: center;
+    width: 400px;
+    height: min-content;
+}
+
+/* Sobremesas */
+.my-cart-dessert-added {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.my-cart-dessert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.my-cart-dessert-empty {
+    color: var(--gray);
+}
+
+.my-cart-dessert img {
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.my-cart-title {
+    color: var(--orange);
+    margin-bottom: 16px;
+}
+
+.my-cart-dessert-button {
+    display: flex;
+    border: transparent;
+    background-color: transparent;
+    transition: 200ms;
+}
+
+.my-cart-dessert-button:hover {
+    opacity: 0.8;
+}
+
+.my-cart-dessert-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.my-cart-dessert-texts p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.my-cart-details {
+    display: flex;
+    gap: 16px;
+}
+
+.my-cart-dessert-quantity {
+    color: var(--orange);
+    font-weight: 500;
+}
+
+.my-cart-dessert-unit {
+    color: var(--gray);
+}
+
+/* Valor Total */
+.my-cart-total {
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-cart-total span {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* Livre de Carbono Tag */
+.my-cart-carbon {
+    display: flex;
+    gap: 8px;
+    padding: 16px 32px;
+    background-color: var(--background);
+    border-radius: 8px;
+    justify-content: center;
+    margin-bottom: 16px;
+    text-wrap: nowrap;
+}
+
+.my-cart-carbon strong {
+    font-weight: 500;
+}
+
+/* Botão Carrinho */
+.my-cart-button {
+    padding: 16px 0;
+    border-radius: 24px;
+    border: none;
+    background-color: var(--orange);
+    color: var(--white);
+    font-weight: 500;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.my-cart-button:hover {
+    opacity: 0.8;
+}
