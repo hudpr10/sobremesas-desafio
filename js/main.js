@@ -1,12 +1,12 @@
 import dessertData from "./data.js";
-import priceRefactor from "./functions/priceRefactor.js";
 import addDessertToCart from "./functions/addDessertToCart.js";
+import priceRefactorToHtml from "./functions/priceRefactorToHtml.js";
+import priceRefactorToList from "./functions/priceRefactorToList.js";
 import sumDessertOnCart from "./functions/sumDessertOnCart.js";
-import dessertIsOnCart from "./functions/dessertIsOnCart.js";
-import totalPrice from "./functions/totalPrice.js";
 import totalOfDessertsOnCart from "./functions/totalOfDessertsOnCart.js";
+import totalPrice from "./functions/totalPrice.js";
 
-const allDessertsOnCart = [];
+export const allDessertsOnCart = [];
 
 // Adicionando Sobremesas na Tela
 const dessertContainer = document.querySelector(".dessert-container");
@@ -15,7 +15,7 @@ for(let i = 0; i < dessertData.length; i++) {
         <div class="dessert" id="${i}">
             <div>
                 <img class="dessert-img" src="${dessertData[i].image.desktop}" alt="${dessertData[i].name}">
-                <button class="dessert-cart-button" id="0">
+                <button class="dessert-cart-button">
                     <img src="/assets/images/icon-add-to-cart.svg" alt="ícone de carrinho">
                     <span>Adicionar ao Carrinho</span>  
                 </button>
@@ -23,7 +23,7 @@ for(let i = 0; i < dessertData.length; i++) {
             <div>
                 <span class="dessert-category">${dessertData[i].category}</span>
                 <h3 class="dessert-title">${dessertData[i].name}</h3>
-                <span class="dessert-price">R$ ${priceRefactor(dessertData[i].price)}</span>
+                <span class="dessert-price">R$ ${priceRefactorToHtml(dessertData[i].price)}</span>
             </div>
         </div>
     `;
@@ -34,40 +34,50 @@ const allDessertButtons = document.querySelectorAll(".dessert-cart-button");
 for(let i = 0; i < allDessertButtons.length; i++) {
     allDessertButtons[i].addEventListener("click", () => {
         // Variáveis para auxiliar na manipulação dos dados
-        const id = `dessert${i}`
-        let quantity = Number(allDessertButtons[i].id);
+        const htmlDessert = allDessertButtons[i].parentNode.parentNode;
+        const id = i;
 
-        if(quantity === 0) {
-            allDessertButtons[i].id = 1;
+        const titleDessert = htmlDessert.querySelector(".dessert-title").innerHTML;
+        const priceDessert = htmlDessert.querySelector(".dessert-price").innerHTML;
 
-            // Adicionar sobremesa ao carrinho
-            addDessertToCart(dessertData[i].name, id, dessertData[i].price, 1, allDessertsOnCart);
+        const index = allDessertsOnCart.findIndex(dessert => dessert.name === titleDessert);
 
-            console.log(quantity)
-
-            // Adicionar sobremesa a lista de sobremesas adicionadas
+        if(index === -1) {
+            // Adicionando Sobremesa no Carrinho
             allDessertsOnCart.push({
-                name: dessertData[i].name,
-                price: dessertData[i].price,
-                total: dessertData[i].price,
+                name: titleDessert,
+                price: priceRefactorToList(priceDessert),
+                total: priceRefactorToList(priceDessert),
                 quantity: 1
             });
+
+            // Adicionando Sobremesa na seção do carrinho
+            addDessertToCart(titleDessert, priceDessert, 1, id, allDessertsOnCart);
         } else {
-            quantity += 1
-            allDessertButtons[i].id = quantity;
+            // Variáveis para auxiliar na manipulação dos dados
+            const quantity = allDessertsOnCart[index].quantity + 1
+            const total = quantity * allDessertsOnCart[index].price
 
-            // Aumentar quantidade de sobremesa no carrinho
-            sumDessertOnCart(id, dessertData[i].price, quantity);
+            // Somando na lista a quantidade e total da sobremesa
+            allDessertsOnCart[index] = {
+                name: titleDessert,
+                price: priceRefactorToList(priceDessert),
+                total: total,
+                quantity: quantity
+            };
 
-            // Verifica se a sobremesa está no carrinho e aumenta a quantidade
-            dessertIsOnCart(allDessertsOnCart, dessertData[i].name);
+            // Somando Sobremesa na seção do carrinho
+            sumDessertOnCart(id, total, quantity);
         }
-        
-        // Quantidade de sobremesas no carrinho
-        totalOfDessertsOnCart(allDessertsOnCart);
 
-        // Calcula o valor total das sobremesas adicionadas ao carrinho
+        // Ajeitando quantidade de sobremesas (totais) e preço total
+        totalOfDessertsOnCart(allDessertsOnCart);
         totalPrice(allDessertsOnCart);
     });
 }
 
+// Finalizar pedido
+const confirmButton = document.querySelector(".my-cart-button");
+confirmButton.addEventListener("click", () => {
+    console.log(allDessertsOnCart);
+});

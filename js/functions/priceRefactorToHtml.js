@@ -1,4 +1,4 @@
-function priceRefactor(price) {
+function priceRefactorToHtml(price) {
     let newPrice = (price).toString().replace(".", ",");
     if(newPrice.includes(",")) {
         newPrice = newPrice.concat("0");
@@ -8,4 +8,4 @@ function priceRefactor(price) {
     return newPrice;
 }
 
-export default priceRefactor;
+export default priceRefactorToHtml;

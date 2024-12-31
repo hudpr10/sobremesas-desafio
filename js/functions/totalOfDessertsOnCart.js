@@ -6,7 +6,11 @@ function totalOfDessertsOnCart(list) {
         total += list[i].quantity;
     }
 
-    cartTitleContainer.innerHTML = `(${total})`;
+    if(total === 0) {
+        cartTitleContainer.innerHTML = "";
+    } else {
+        cartTitleContainer.innerHTML = `(${total})`;
+    }
 }
 
 export default totalOfDessertsOnCart;

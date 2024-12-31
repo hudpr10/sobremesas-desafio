@@ -1,6 +1,7 @@
-import priceRefactor from "./priceRefactor.js";
+import priceRefactorToHtml from "./priceRefactorToHtml.js";
 
 const totalPriceContainer = document.querySelector(".my-cart-total");
+
 function totalPrice(list) {
     let total = 0;
 
@@ -8,7 +9,7 @@ function totalPrice(list) {
         total += list[i].total;
     }
 
-    totalPriceContainer.childNodes[3].innerHTML = priceRefactor(total);
+    totalPriceContainer.childNodes[3].innerHTML = `R$ ${priceRefactorToHtml(total)}`;
 }
 
 export default totalPrice;
