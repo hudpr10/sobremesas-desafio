@@ -1,15 +1,11 @@
-import removeDessertFromCart from "./removeDessertFromCart.js";
-import totalOfDessertsOnCart from "./totalOfDessertsOnCart.js";
-import totalPrice from "./totalPrice.js";
-
 const addedDessertsContainer = document.querySelector(".my-cart-dessert-added");
 
-function addDessertToCart(name, price, quantity, id, list) {
+function addDessertToCart(name, price, quantity, id) {
     addedDessertsContainer.innerHTML += `
-        <div class="my-cart-dessert" id="${id}">
+        <div class="my-cart-dessert dessert-cart-${id}">
             <div class="my-cart-dessert-texts">
                 <p>${name}</p>
-                <div class="my-cart-details dessert${id}">
+                <div class="my-cart-details">
                     <span class="my-cart-dessert-quantity">${quantity}x</span>
                     <span class="my-cart-dessert-unit">${price}</span>
                     <span class="my-cart-dessert-total">${price}</span>
@@ -20,22 +16,6 @@ function addDessertToCart(name, price, quantity, id, list) {
             </button>
         </div>
     `;
-
-    const buttons = document.querySelectorAll(`[data-remove]`);
-    buttons.forEach(button => {
-        // Pegando o Id da sobremesa
-        const dessertDataRemove = button.getAttribute("data-remove");
-        // Utilizando o Id para pegar o botão
-        const removeHtmlButton = document.querySelector(`[data-remove="${dessertDataRemove}"]`);
-        // Pegando todo o elemento html da sobremesa no carrinho
-        const desserthtml = removeHtmlButton.parentNode;
-
-        button.addEventListener("click", () => {
-            removeDessertFromCart(list, desserthtml);
-            totalPrice(list);
-            totalOfDessertsOnCart(list);
-        })
-    });
 }
 
 export default addDessertToCart;

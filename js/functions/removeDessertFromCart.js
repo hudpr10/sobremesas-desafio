@@ -1,4 +1,4 @@
-function removeDessertFromCart(list, dessert) {
+function removeDessertFromCart(list, dessert, button, img) {
     // Remover sobremesa da lista
     const dessertTitle = dessert.querySelector("p").innerHTML;
     const index = list.findIndex(dessert => dessert.name === dessertTitle);
@@ -6,6 +6,11 @@ function removeDessertFromCart(list, dessert) {
 
     // Remover sobremesa do carrinho
     dessert.remove();
+
+    // Atualizar o estilo do botão
+    button.style = "z-index: 1;";
+
+    img.classList.remove("dessert-img-select");
 }
 
 export default removeDessertFromCart;

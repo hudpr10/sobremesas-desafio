@@ -10,6 +10,12 @@
     width: var(--img-height);
     height: var(--img-height);
     border-radius: 8px;
+    border: 2px solid transparent;
+    transition: 200ms;
+}
+
+.dessert-img-select {
+    border: 2px solid var(--orange);
 }
 
 .dessert-cart-button {
@@ -19,16 +25,42 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 8px;
     padding: 8px 16px;
-    background-color: var(--background);
     border-radius: 24px;
-    border: 1px solid var(--black);
-    cursor: pointer;
     transition: 200ms;
+    width: 210px;
 }
 
-.dessert-cart-button img {
+.dessert-cart-button-non-add {
+    background-color: var(--background);
+    gap: 8px;
+    border: 1px solid var(--black);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.dessert-cart-button-add {
+    background-color: var(--orange);
+    color: var(--white);
+    justify-content: space-between;
+    z-index: 0;
+}
+
+.button-quantity {
+    display: flex;
+    background-color: transparent;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.button-quantity img {
+    width: 16px;
+    height: 16px;
+}
+
+.dessert-cart-button-non-add img {
     width: 24px;
     height: 24px;
 }
@@ -39,7 +71,7 @@
     font-size: 0.875rem;
 }
 
-.dessert-cart-button:hover {
+.dessert-cart-button-non-add:hover {
     border: 1px solid var(--orange);
     color: var(--orange);
 }
