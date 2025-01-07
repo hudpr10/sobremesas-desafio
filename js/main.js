@@ -16,8 +16,8 @@ let allDessertButtons = document.querySelectorAll(".dessert-cart-button-non-add"
 for(let i = 0; i < allDessertButtons.length; i++) {
     allDessertButtons[i].addEventListener("click", () => {
         // Variáveis para auxiliar na manipulação dos dados
-        const htmlDessert = allDessertButtons[i].parentNode.parentNode.parentNode;
         const id = i;
+        const htmlDessert = allDessertButtons[i].parentNode.parentNode.parentNode;
 
         const titleDessert = htmlDessert.querySelector(".dessert-title").innerHTML;
         const priceDessert = htmlDessert.querySelector(".dessert-price").innerHTML;
@@ -99,16 +99,17 @@ for(let i = 0; i < allDessertButtons.length; i++) {
 
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
-        })
-                    
+        })      
         decrementButton.addEventListener("click", () => {
             if(quantity === 1) {
                 const dessertOnCart = document.querySelectorAll(`.dessert-cart-${id}`)[1];
-                removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
-                buttonQuantity.innerHTML = quantity;
 
+                if(dessertOnCart !== undefined) {
+                    removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
+                    buttonQuantity.innerHTML = quantity;
+                } 
             } else {
-                quantity -= 1
+                quantity -= 1;
                 const total = allDessertsOnCart[index].price * quantity;
 
                 allDessertsOnCart[index] = {
@@ -124,6 +125,6 @@ for(let i = 0; i < allDessertButtons.length; i++) {
 
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
-        })
+        });
     });
 }
