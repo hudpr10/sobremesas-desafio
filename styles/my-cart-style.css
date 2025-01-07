@@ -77,6 +77,20 @@
     color: var(--gray);
 }
 
+/* Imagem do Carrinho*/
+.my-cart-empty,
+.my-cart-empty-img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min-content;
+}
+
+.my-cart-empty-text {
+    text-wrap: nowrap;
+    color: var(--gray);
+}
+
 /* Valor Total */
 .my-cart-total {
     margin: 16px 0;

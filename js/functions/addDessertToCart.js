@@ -1,6 +1,5 @@
-const addedDessertsContainer = document.querySelector(".my-cart-dessert-added");
-
 function addDessertToCart(name, price, quantity, id) {
+    const addedDessertsContainer = document.querySelector(".my-cart-dessert-added");
     addedDessertsContainer.innerHTML += `
         <div class="my-cart-dessert dessert-cart-${id}">
             <div class="my-cart-dessert-texts">

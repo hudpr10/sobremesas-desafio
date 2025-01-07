@@ -6,6 +6,7 @@ import removeDessertFromCart from "./functions/removeDessertFromCart.js";
 import sumDessertOnCart from "./functions/sumDessertOnCart.js";
 import totalOfDessertsOnCart from "./functions/totalOfDessertsOnCart.js";
 import totalPrice from "./functions/totalPrice.js";
+import showEmptyCart from './functions/showEmptyCart.js';
 
 export const allDessertsOnCart = [];
 addDessertOnScreen(dessertData);
@@ -25,6 +26,7 @@ for(let i = 0; i < allDessertButtons.length; i++) {
         const buttonsContainer = htmlDessert.querySelector(".button-container");
         const buttonNonAdd = buttonsContainer.querySelector("button");
         const img = htmlDessert.querySelector(".dessert-img");
+        const buttonQuantity = htmlDessert.querySelector(".dessert-quantity");
 
         if(index === -1) {
             // Adicionando Sobremesa no Carrinho
@@ -35,8 +37,10 @@ for(let i = 0; i < allDessertButtons.length; i++) {
                 quantity: 1
             });
 
+            showEmptyCart(allDessertsOnCart.length);
+
             // Adicionando Sobremesa na seção do carrinho
-            addDessertToCart(titleDessert, priceDessert, 1, id, allDessertsOnCart);
+            addDessertToCart(titleDessert, priceDessert, 1, id);
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
             
@@ -50,15 +54,22 @@ for(let i = 0; i < allDessertButtons.length; i++) {
             buttons.forEach(button => {
                 button.addEventListener("click", () => {
                     // Pegando o Id da sobremesa
-                    const dessertDataRemove = button.getAttribute("data-remove");
+                    const dessertId = button.getAttribute("data-remove");
                     // Utilizando o Id para pegar o botão
-                    const removeHtmlButton = document.querySelector(`[data-remove="${dessertDataRemove}"]`);
+                    const removeHtmlButton = document.querySelector(`[data-remove="${dessertId}"]`);
                     // Pegando todo o elemento html da sobremesa no carrinho
                     const desserthtml = removeHtmlButton.parentNode;
+                    // Pegando imagem
+                    const dessertToUpdate = document.querySelectorAll(`.dessert-cart-${dessertId}`)[0];
+                    const quantityToUpdate = dessertToUpdate.querySelector(".dessert-quantity");
+                    const imgToUptade = dessertToUpdate.querySelector(".dessert-img");
+
+                    quantityToUpdate.innerHTML = 1;
 
                     const syncClass = desserthtml.classList[1];
+                    const buttonToRemove = document.querySelector(`.${syncClass}`).querySelector(".dessert-cart-button-non-add");
 
-                    removeDessertFromCart(allDessertsOnCart, desserthtml, buttonNonAdd, img);
+                    removeDessertFromCart(allDessertsOnCart, desserthtml, buttonToRemove, imgToUptade);
                     totalPrice(allDessertsOnCart);
                     totalOfDessertsOnCart(allDessertsOnCart);
                 })
@@ -82,6 +93,8 @@ for(let i = 0; i < allDessertButtons.length; i++) {
                 quantity: quantity
             };
 
+            buttonQuantity.innerHTML = quantity;
+
             sumDessertOnCart(id, total, quantity);
 
             totalOfDessertsOnCart(allDessertsOnCart);
@@ -92,6 +105,8 @@ for(let i = 0; i < allDessertButtons.length; i++) {
             if(quantity === 1) {
                 const dessertOnCart = document.querySelectorAll(`.dessert-cart-${id}`)[1];
                 removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
+                buttonQuantity.innerHTML = quantity;
+
             } else {
                 quantity -= 1
                 const total = allDessertsOnCart[index].price * quantity;
@@ -104,6 +119,7 @@ for(let i = 0; i < allDessertButtons.length; i++) {
                 };
 
                 sumDessertOnCart(id, total, quantity);
+                buttonQuantity.innerHTML = quantity;
             }   
 
             totalOfDessertsOnCart(allDessertsOnCart);
@@ -111,9 +127,3 @@ for(let i = 0; i < allDessertButtons.length; i++) {
         })
     });
 }
-
-// Finalizar pedido
-const confirmButton = document.querySelector(".my-cart-button");
-confirmButton.addEventListener("click", () => {
-    console.log(allDessertsOnCart);
-});

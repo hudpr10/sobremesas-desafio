@@ -1,3 +1,5 @@
+import showEmptyCart from "./showEmptyCart.js";
+
 function removeDessertFromCart(list, dessert, button, img) {
     // Remover sobremesa da lista
     const dessertTitle = dessert.querySelector("p").innerHTML;
@@ -11,6 +13,10 @@ function removeDessertFromCart(list, dessert, button, img) {
     button.style = "z-index: 1;";
 
     img.classList.remove("dessert-img-select");
+
+    if(list.length === 0) {
+        showEmptyCart(list.length);
+    }
 }
 
 export default removeDessertFromCart;

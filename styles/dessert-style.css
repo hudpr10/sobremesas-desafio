@@ -1,3 +1,4 @@
+/* Sobremesa */
 .dessert {
     position: relative;
     width: min-content;
@@ -18,6 +19,7 @@
     border: 2px solid var(--orange);
 }
 
+/* Botão */ 
 .dessert-cart-button {
     position: absolute;
     top: calc(var(--img-height) - 21px);
@@ -31,6 +33,7 @@
     width: 210px;
 }
 
+/* Botão de adicionar sobremesa */
 .dessert-cart-button-non-add {
     background-color: var(--background);
     gap: 8px;
@@ -39,6 +42,7 @@
     z-index: 1;
 }
 
+/* Botão para controlar quantidade */
 .dessert-cart-button-add {
     background-color: var(--orange);
     color: var(--white);
@@ -53,12 +57,18 @@
     border-radius: 50%;
     padding: 4px;
     cursor: pointer;
+    transition: 200ms;
+}
+
+.button-quantity:hover {
+    background-color: var(--orange-hover);
 }
 
 .button-quantity img {
     width: 16px;
     height: 16px;
 }
+
 
 .dessert-cart-button-non-add img {
     width: 24px;

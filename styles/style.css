@@ -9,6 +9,7 @@
     --black: #272727;
     --gray: #a3a3a3;
     --orange: #C73B0F;
+    --orange-hover: #c55735;
     --background: hsl(13, 31%, 94%);
     --red: hsl(14, 86%, 42%);
 }
@@ -39,6 +40,6 @@ main {
 .dessert-container {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    width: 100%;
-    row-gap: 32px;
+    width: min-content;
+    gap: 32px;
 }
