@@ -13,11 +13,10 @@ addDessertOnScreen(dessertData);
 
 // Capturando Click nos Botões da Sobremesa
 let allDessertButtons = document.querySelectorAll(".dessert-cart-button-non-add");
-for(let i = 0; i < allDessertButtons.length; i++) {
-    allDessertButtons[i].addEventListener("click", () => {
+for(let id = 0; id < allDessertButtons.length; id++) {
+    allDessertButtons[id].addEventListener("click", () => {
         // Variáveis para auxiliar na manipulação dos dados
-        const id = i;
-        const htmlDessert = allDessertButtons[i].parentNode.parentNode.parentNode;
+        const htmlDessert = allDessertButtons[id].parentNode.parentNode.parentNode;
 
         const titleDessert = htmlDessert.querySelector(".dessert-title").innerHTML;
         const priceDessert = htmlDessert.querySelector(".dessert-price").innerHTML;
@@ -82,9 +81,9 @@ for(let i = 0; i < allDessertButtons.length; i++) {
 
         let quantity = allDessertsOnCart[index].quantity;
 
-        incrementButton.addEventListener("click", () => {
+        function incrementFunction() {
             quantity += 1
-
+        
             const total = quantity * allDessertsOnCart[index].price
             allDessertsOnCart[index] = {
                 name: titleDessert,
@@ -92,22 +91,23 @@ for(let i = 0; i < allDessertButtons.length; i++) {
                 total: total,
                 quantity: quantity
             };
-
+        
             buttonQuantity.innerHTML = quantity;
-
+        
             sumDessertOnCart(id, total, quantity);
-
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
-        })      
-        decrementButton.addEventListener("click", () => {
+        }
+
+        function decrementFunction() {
             if(quantity === 1) {
                 const dessertOnCart = document.querySelectorAll(`.dessert-cart-${id}`)[1];
 
-                if(dessertOnCart !== undefined) {
-                    removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
-                    buttonQuantity.innerHTML = quantity;
-                } 
+                removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
+                buttonQuantity.innerHTML = quantity;
+
+                incrementButton.removeEventListener("click", incrementFunction);
+                decrementButton.removeEventListener("click", decrementFunction);
             } else {
                 quantity -= 1;
                 const total = allDessertsOnCart[index].price * quantity;
@@ -125,6 +125,9 @@ for(let i = 0; i < allDessertButtons.length; i++) {
 
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
-        });
+        }
+
+        incrementButton.addEventListener("click", incrementFunction);
+        decrementButton.addEventListener("click", decrementFunction);
     });
 }
