@@ -54,23 +54,18 @@ for(let id = 0; id < allDessertButtons.length; id++) {
                 button.addEventListener("click", () => {
                     // Pegando o Id da sobremesa
                     const dessertId = button.getAttribute("data-remove");
-                    // Utilizando o Id para pegar o botão
-                    const removeHtmlButton = document.querySelector(`[data-remove="${dessertId}"]`);
-                    // Pegando todo o elemento html da sobremesa no carrinho
-                    const desserthtml = removeHtmlButton.parentNode;
-                    // Pegando imagem
-                    const dessertToUpdate = document.querySelectorAll(`.dessert-cart-${dessertId}`)[0];
-                    const quantityToUpdate = dessertToUpdate.querySelector(".dessert-quantity");
-                    const imgToUptade = dessertToUpdate.querySelector(".dessert-img");
+
+                    const dessert = document.querySelectorAll(`.dessert-cart-${dessertId}`);
+                    const quantityToUpdate = dessert[0].querySelector(".dessert-quantity");
+                    const imgToUptade = dessert[0].querySelector(".dessert-img");
+                    const buttonToRemove = dessert[0].querySelector(".dessert-cart-button-non-add");
 
                     quantityToUpdate.innerHTML = 1;
-
-                    const syncClass = desserthtml.classList[1];
-                    const buttonToRemove = document.querySelector(`.${syncClass}`).querySelector(".dessert-cart-button-non-add");
-
-                    removeDessertFromCart(allDessertsOnCart, desserthtml, buttonToRemove, imgToUptade);
+                    
+                    removeDessertFromCart(allDessertsOnCart, dessert[1], buttonToRemove, imgToUptade, dessert[0]);
                     totalPrice(allDessertsOnCart);
                     totalOfDessertsOnCart(allDessertsOnCart);
+
                 })
             });
         } 
@@ -101,13 +96,10 @@ for(let id = 0; id < allDessertButtons.length; id++) {
 
         function decrementFunction() {
             if(quantity === 1) {
-                const dessertOnCart = document.querySelectorAll(`.dessert-cart-${id}`)[1];
+                const dessert = document.querySelectorAll(`.dessert-cart-${id}`);
 
-                removeDessertFromCart(allDessertsOnCart, dessertOnCart, buttonNonAdd, img);
+                removeDessertFromCart(allDessertsOnCart, dessert[1], buttonNonAdd, img, dessert[0]);
                 buttonQuantity.innerHTML = quantity;
-
-                incrementButton.removeEventListener("click", incrementFunction);
-                decrementButton.removeEventListener("click", decrementFunction);
             } else {
                 quantity -= 1;
                 const total = allDessertsOnCart[index].price * quantity;
