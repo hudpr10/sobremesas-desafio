@@ -6,7 +6,7 @@ function addDessertToCart(name, price, quantity, id) {
                 <p>${name}</p>
                 <div class="my-cart-details">
                     <span class="my-cart-dessert-quantity">${quantity}x</span>
-                    <span class="my-cart-dessert-unit">${price}</span>
+                    <span class="my-cart-dessert-unit gray-text">${price}</span>
                     <span class="my-cart-dessert-total">${price}</span>
                 </div>
             </div>

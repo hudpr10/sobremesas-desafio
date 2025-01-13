@@ -1,7 +1,9 @@
 const cartContainer = document.querySelector(".my-cart-container");
 
-function showEmptyCart(listHasOneItem) {
-    if(listHasOneItem === 0) {
+function showEmptyCart(list) {
+    const listLength = list.length;
+
+    if(listLength === 0) {
         cartContainer.innerHTML += `
             <div class="my-cart-empty">
                 <img class="my-cart-empty-img" src="./assets/images/illustration-empty-cart.svg" alt="desenho de um bolo sem uma das suas fatias">
@@ -16,14 +18,14 @@ function showEmptyCart(listHasOneItem) {
         button.remove();
         tag.remove();
         totalPrice.remove();
-    } else if(listHasOneItem === 1){
+    } else if(listLength === 1){
         const emptyCart = cartContainer.querySelector(".my-cart-empty");
         emptyCart.remove();
 
         cartContainer.innerHTML += `
             <div class="my-cart-total">
                 <p>Valor total</p>
-                <span>R$ 0,00</span>
+                <span class="total-price">R$ 0,00</span>
             </div>
             <div class="my-cart-carbon">
                 <img src="./assets/images/icon-carbon-neutral.svg" alt="ícone de árvore">
@@ -34,7 +36,7 @@ function showEmptyCart(listHasOneItem) {
 
         const confirmButton = document.querySelector(".my-cart-button");
         confirmButton.addEventListener("click", () => {
-            console.log(allDessertsOnCart);
+            console.log(list);
         });
     } 
 }

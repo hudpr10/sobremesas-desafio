@@ -1,0 +1,88 @@
+.order-confirmed-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    z-index: 1;
+    padding: 24px;
+    border-radius: 8px;
+    width: 550px;
+}
+
+.order-title {
+    margin: 8px 0 4px 0;
+    color: var(--text-color);
+    font-size: 1.675rem;
+}
+
+.order-subtitle {
+    color: var(--gray);
+}
+
+/* Lista de Pedidos */
+.order-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--background);
+    margin: 16px 0;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+/* Pedido */
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0d9d5;
+}
+
+.order-item img {
+    border-radius: 4px;
+    width: 75px;
+    height: 75px;
+}
+
+.order-img-text-container {
+    display: flex;
+    gap: 16px;
+}
+
+.order-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;   
+}
+
+.order-text-container p {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.order-text-details-container {
+    display: flex;
+    gap: 16px;
+}
+
+.order-dessert-quantity {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.order-dessert-total-price {
+    color: var(--text-color);
+    font-weight: 700;
+    margin: auto 0;
+}
+
+/* Preço Total*/
+.order-total-price-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: var(--text-color);
+    align-items: center;
+}

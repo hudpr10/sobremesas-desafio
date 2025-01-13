@@ -14,7 +14,7 @@ function removeDessertFromCart(list, dessertOnCart, button, img, dessertMain) {
     img.classList.remove("dessert-img-select");
 
     if(list.length === 0) {
-        showEmptyCart(list.length);
+        showEmptyCart(list);
     }
 
     const buttons = dessertMain.querySelectorAll(".button-quantity");

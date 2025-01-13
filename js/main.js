@@ -33,10 +33,10 @@ for(let id = 0; id < allDessertButtons.length; id++) {
                 name: titleDessert,
                 price: priceRefactorToList(priceDessert),
                 total: priceRefactorToList(priceDessert),
-                quantity: 1
+                quantity: 1,
             });
 
-            showEmptyCart(allDessertsOnCart.length);
+            showEmptyCart(allDessertsOnCart);
 
             // Adicionando Sobremesa na seção do carrinho
             addDessertToCart(titleDessert, priceDessert, 1, id);
