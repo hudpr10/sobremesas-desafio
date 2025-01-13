@@ -21,13 +21,12 @@
 }
 
 /* Lista de Pedidos */
-.order-list-container {
+.order-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     background-color: var(--background);
     margin: 16px 0;
-    padding: 24px;
+    padding: 12px 24px;
     border-radius: 8px;
 }
 
@@ -35,7 +34,7 @@
 .order-item {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 12px;
+    padding: 12px 0;
     border-bottom: 1px solid #e0d9d5;
 }
 
@@ -82,7 +81,7 @@
 .order-total-price-container {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 24px 0 12px 0;
     color: var(--text-color);
     align-items: center;
 }

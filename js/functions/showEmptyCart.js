@@ -1,3 +1,5 @@
+import checkoutOrder from "./checkoutOrder.js";
+
 const cartContainer = document.querySelector(".my-cart-container");
 
 function showEmptyCart(list) {
@@ -31,12 +33,12 @@ function showEmptyCart(list) {
                 <img src="./assets/images/icon-carbon-neutral.svg" alt="ícone de árvore">
                 <p>Essa é uma entrega <strong>neutra de carbono</strong></p>
             </div>
-            <button class="my-cart-button">Confirmar pedido</button>
+            <button class="my-cart-button" id="orderConfirm">Confirmar pedido</button>
         `
 
-        const confirmButton = document.querySelector(".my-cart-button");
+        const confirmButton = document.querySelector("#orderConfirm");
         confirmButton.addEventListener("click", () => {
-            console.log(list);
+            checkoutOrder(list)
         });
     } 
 }

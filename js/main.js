@@ -7,6 +7,7 @@ import sumDessertOnCart from "./functions/sumDessertOnCart.js";
 import totalOfDessertsOnCart from "./functions/totalOfDessertsOnCart.js";
 import totalPrice from "./functions/totalPrice.js";
 import showEmptyCart from './functions/showEmptyCart.js';
+import imgConvert from './functions/imgConvert.js';
 
 export const allDessertsOnCart = [];
 addDessertOnScreen(dessertData);
@@ -34,6 +35,7 @@ for(let id = 0; id < allDessertButtons.length; id++) {
                 price: priceRefactorToList(priceDessert),
                 total: priceRefactorToList(priceDessert),
                 quantity: 1,
+                img: imgConvert(img)
             });
 
             showEmptyCart(allDessertsOnCart);
@@ -43,10 +45,8 @@ for(let id = 0; id < allDessertButtons.length; id++) {
             totalOfDessertsOnCart(allDessertsOnCart);
             totalPrice(allDessertsOnCart);
             
-            // Mudando estilo do botão
+            // Mudando estilo do botão e da imagem
             buttonNonAdd.style = "z-index: 0;";
-
-            const img = htmlDessert.querySelector(".dessert-img");
             img.classList.add("dessert-img-select");
 
             const buttons = document.querySelectorAll(`[data-remove]`);
@@ -84,7 +84,8 @@ for(let id = 0; id < allDessertButtons.length; id++) {
                 name: titleDessert,
                 price: priceRefactorToList(priceDessert),
                 total: total,
-                quantity: quantity
+                quantity: quantity,
+                img: imgConvert(img)
             };
         
             buttonQuantity.innerHTML = quantity;
@@ -108,7 +109,8 @@ for(let id = 0; id < allDessertButtons.length; id++) {
                     name: titleDessert,
                     price: priceRefactorToList(priceDessert),
                     total: total,
-                    quantity: quantity
+                    quantity: quantity,
+                    img: imgConvert(img)
                 };
 
                 sumDessertOnCart(id, total, quantity);
