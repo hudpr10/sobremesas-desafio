@@ -1,5 +1,5 @@
 # Tela de Pedidos Online para Loja de Doces e Sobremesas
-Este projeto consiste em uma tela única de pedidos online, desenvolvida a partir de um desafio proposto pelo site Frontend Mentor. Sem utilizar frameworks ou bibliotecas, foram aplicadas as tecnologias HTML, CSS e JavaScript puro para criar uma solução funcional e visualmente atrativa.
+Este projeto consiste em uma tela única de pedidos online, desenvolvida a partir de um desafio proposto pelo site [Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d). Sem utilizar frameworks ou bibliotecas, foram aplicadas as tecnologias HTML, CSS e JavaScript puro para criar uma solução funcional e visualmente atrativa.
 
 ## Funcionalidades principais:
 
