@@ -2,33 +2,18 @@ import priceRefactorToHtml from "./priceRefactorToHtml.js";
 import totalPrice from "./totalPrice.js";
 
 function checkoutOrder(orderList) {
-    const mainHtml = document.querySelector("main");
+    const background = document.querySelector(".background-opacity");
+    const orderContainer = document.querySelector(".order-confirmed-container");
 
-    mainHtml.innerHTML += `
-        <section class="background-opacity"></section>
-        <section class="order-confirmed-container">
-            <img src="./assets/images/icon-order-confirmed.svg" alt="ícone de verificado, informando que o pedido foi realizado">
-            <h2 class="order-title">Pedido Confirmado</h2>
-            <p class="order-subtitle">Esperamos que você goste da(s) sobremesa(s)!</p>
-            <div class="order-list">
-                <ul class="order-list-container">
-                </ul>
-                <div class="order-total-price-container">
-                    <p>Total do Pedido</p>
-                    <span class="order-total-price total-price"></span>
-                </div>
-            </div>
-            <button class="my-cart-button" id="checkout">Começar Novo Pedido</button>
-        </section>
-    `
-    
     totalPrice(orderList);
+    background.style.display = "block";
+    orderContainer.style.display = "block";    
 
-    const orderContainer = mainHtml.querySelector(".order-list-container");
+    const orderListContainer = orderContainer.querySelector(".order-list-container")
     for(let i = 0; i < orderList.length; i++) {
         const order = orderList[i];
 
-        orderContainer.innerHTML += `
+        orderListContainer.innerHTML += `
             <li class="order-item">
                 <div class="order-img-text-container">
                     <img src="./assets/images/${order.img}" alt="${order.name}">
@@ -44,13 +29,6 @@ function checkoutOrder(orderList) {
             </li>            
         `
     }
-
-    const buttonPageUpdate = document.querySelector("#checkout");
-    buttonPageUpdate.addEventListener("click", pageUpdate);
-}
-
-function pageUpdate() {
-    window.location.reload();
 }
 
 export default checkoutOrder;

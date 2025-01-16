@@ -10,11 +10,8 @@ function totalPrice(list) {
             total += list[i].total;
         }
     
-        if(totalPriceContainer[1] !== undefined) {
-            totalPriceContainer[1].innerHTML = `R$ ${priceRefactorToHtml(total)}`;
-        } else {
-            totalPriceContainer[0].innerHTML = `R$ ${priceRefactorToHtml(total)}`;
-        }
+        totalPriceContainer[0].innerHTML = `R$ ${priceRefactorToHtml(total)}`;
+        totalPriceContainer[1].innerHTML = `R$ ${priceRefactorToHtml(total)}`;
     }
 }
 
