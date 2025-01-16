@@ -130,9 +130,11 @@ const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", () => {
     const background = document.querySelector(".background-opacity");
     const orderContainer = document.querySelector(".order-confirmed-container");
+    const orderListContainer = document.querySelector(".order-list-container");
 
     background.style.display = "none";
     orderContainer.style.display = "none"; 
+    orderListContainer.innerHTML = "";
 })
 
 const resetButton = document.querySelector("#reset");
