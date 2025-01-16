@@ -2,6 +2,7 @@
 @import url("./dessert-style.css");
 @import url("./my-cart-style.css");
 @import url("./order-style.css");
+@import url("./responsive-style.css");
 
 :root {
     --img-height: 275px;
@@ -11,6 +12,7 @@
     --gray: #a3a3a3;
     --orange: #C73B0F;
     --orange-hover: #c55735;
+    --orange-scroll: #c557358f;
     --background: hsl(13, 31%, 94%);
     --red: hsl(14, 86%, 42%);
 }
@@ -51,13 +53,6 @@ ul, li {
     background-color: #272727;
     z-index: 1;
     opacity: 0.8;
-}
-
-.dessert-container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: min-content;
-    gap: 32px;
 }
 
 .gray-text {

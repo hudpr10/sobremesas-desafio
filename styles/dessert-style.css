@@ -1,3 +1,10 @@
+.dessert-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: min-content;
+    gap: 32px;
+}
+
 /* Sobremesa */
 .dessert {
     position: relative;
@@ -13,6 +20,7 @@
     border-radius: 8px;
     border: 2px solid transparent;
     transition: 200ms;
+    object-fit: cover;
 }
 
 .dessert-img-select {
@@ -68,7 +76,6 @@
     width: 16px;
     height: 16px;
 }
-
 
 .dessert-cart-button-non-add img {
     width: 24px;

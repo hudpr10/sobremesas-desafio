@@ -4,10 +4,20 @@ const dessertContainer = document.querySelector(".dessert-container");
 
 function addDessertOnScreen(data) {
     for(let i = 0; i < data.length; i++) {
+        let img = ""
+
+        if(window.innerWidth < 560) {
+            img = data[i].image.mobile;
+        } else if(window.innerWidth < 850) {
+            img = data[i].image.tablet;
+        } else {
+            img = data[i].image.desktop;
+        }
+        
         dessertContainer.innerHTML += `
             <div class="dessert dessert-cart-${i}">
                 <div>
-                    <img class="dessert-img" src="${data[i].image.desktop}" alt="${data[i].name}">
+                    <img class="dessert-img" src="${img}" alt="${data[i].name}">
                     <div class="button-container">
                         <button class="dessert-cart-button dessert-cart-button-non-add">
                             <img src="/assets/images/icon-add-to-cart.svg" alt="ícone de carrinho">

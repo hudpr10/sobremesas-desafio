@@ -18,7 +18,7 @@ function checkoutOrder(orderList) {
                     <span class="order-total-price total-price"></span>
                 </div>
             </div>
-            <button class="my-cart-button" id="checkout">Finalizar Pedido</button>
+            <button class="my-cart-button" id="checkout">Começar Novo Pedido</button>
         </section>
     `
     

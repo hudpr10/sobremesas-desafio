@@ -1,5 +1,6 @@
-const cartTitleContainer = document.querySelector(".my-cart-title").childNodes[1];
 function totalOfDessertsOnCart(list) {
+    const cartTitleContainer = document.querySelector(".my-cart-title").childNodes[1];
+
     let total = 0;
 
     for(let i = 0; i < list.length; i++) {

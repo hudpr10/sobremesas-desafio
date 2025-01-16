@@ -26,7 +26,28 @@
     flex-direction: column;
     background-color: var(--background);
     margin: 16px 0;
-    padding: 12px 24px;
+    padding: 12px 24px 12px 24px;
+    border-radius: 8px;
+}
+
+.order-list-container {
+    padding-right: 24px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.order-list-container::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 8px;
+}
+
+.order-list-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+}
+
+.order-list-container::-webkit-scrollbar-thumb {
+    background: var(--orange-scroll);
     border-radius: 8px;
 }
 
