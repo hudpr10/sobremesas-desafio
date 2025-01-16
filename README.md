@@ -13,3 +13,5 @@ Durante o desenvolvimento, foram superados desafios de lógica de programação,
 
 ## Pré-Visualização
 ![Imagem da Página de Doces e Sobremesas, mostrando opções de sobremesa e um carrinho com sobremesas adicionadas](./preview.jpg)
+
+Projeto Hospedado na Vercel: https://sobremesas-desafio.vercel.app
