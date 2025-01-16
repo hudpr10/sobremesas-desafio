@@ -10,6 +10,12 @@
     width: 550px;
 }
 
+.top-icons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
 .order-title {
     margin: 8px 0 4px 0;
     color: var(--text-color);
